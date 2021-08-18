@@ -1,0 +1,34 @@
+apiVersion: gateway.solo.io/v1
+kind: VirtualService
+metadata:
+  name: fruits-api
+  namespace: gloo-system
+spec:
+  displayName: FruitsAPI
+  virtualHost:
+    options:
+      # -------- Web Application Firewall - Check User-Agent  -----------
+      waf:
+        customInterventionMessage: "Firefox not supported"
+        ruleSets:
+        - ruleStr: |
+            SecRuleEngine On
+            SecRule REQUEST_HEADERS:User-Agent ".*Firefox.*" "deny,status:403,id:107,phase:1,msg:'unsupported user agent'"
+    domains:
+      - "*"
+    routes:
+      # --------------------- Application Routes -----------------
+      - matchers:
+          - prefix: /api/
+        routeAction:
+          single:
+            upstream:
+              name: fruits-app-fruits-api-8080
+              namespace: gloo-system
+        options:
+          prefixRewrite: /v1/api/
+          # ---------------- Rate limit config ----------------------
+          rateLimitConfigs:
+            refs:
+            - name: global-limit
+              namespace: gloo-system

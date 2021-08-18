@@ -1,0 +1,12 @@
+gloo:
+  settings:
+    writeNamespace: gloo-system
+    watchNamespace:
+      - gloo-system
+      - fruits-app
+  gatewayProxies:
+    gatewayProxy:
+      service:
+        type: NodePort
+        httpNodePort: 30080
+        httpsNodePort: 30443
