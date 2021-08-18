@@ -7,6 +7,7 @@ spec:
   displayName: FruitsAPI
   virtualHost:
     options:
+      # -------- CORS Config  -----------
       cors:
         allowOriginRegex:
           - '^http(s)?:\/\/localhost:[0-9]{4,5}$'
@@ -16,11 +17,17 @@ spec:
         allowMethods:
           - DELETE
         maxAge: 1d
+      # -------- Web Application Firewall - Check User-Agent  -----------
+      waf:
+        customInterventionMessage: "Firefox not supported"
+        ruleSets:
+          - ruleStr: |
+              SecRuleEngine On
+              SecRule REQUEST_HEADERS:User-Agent ".*Firefox.*" "deny,status:403,id:107,phase:1,msg:'unsupported user agent'"
     domains:
       - "*"
     routes:
-      # Application Routes
-      # ------------
+      # --------------------- Application Routes -----------------
       - matchers:
           - prefix: /api/
         routeAction:
@@ -30,3 +37,8 @@ spec:
               namespace: gloo-system
         options:
           prefixRewrite: /v1/api/
+          # ---------------- Rate limit config ----------------------
+          rateLimitConfigs:
+            refs:
+              - name: global-limit
+                namespace: gloo-system

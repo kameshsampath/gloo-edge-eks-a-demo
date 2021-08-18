@@ -6,8 +6,7 @@ USER root
 
 RUN mkdir -p /usr/src/app \
   && git clone https://github.com/kameshsampath/fruits-app-ui /usr/src/app \
-  && echo "REACT_APP_API_HOST=$GLOO_PROXY_URL/api/" > /usr/src/app/.env \
-  && cp /usr/src/app/.env  /usr/src/app/.env.local
+  && echo "REACT_APP_API_HOST=$GLOO_PROXY_URL/api" > /usr/src/app/.env
 
 WORKDIR /usr/src/app
 

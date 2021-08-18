@@ -11,9 +11,9 @@ spec:
       waf:
         customInterventionMessage: "Firefox not supported"
         ruleSets:
-        - ruleStr: |
-            SecRuleEngine On
-            SecRule REQUEST_HEADERS:User-Agent ".*Firefox.*" "deny,status:403,id:107,phase:1,msg:'unsupported user agent'"
+          - ruleStr: |
+              SecRuleEngine On
+              SecRule REQUEST_HEADERS:User-Agent ".*Firefox.*" "deny,status:403,id:107,phase:1,msg:'unsupported user agent'"
     domains:
       - "*"
     routes:
@@ -30,5 +30,5 @@ spec:
           # ---------------- Rate limit config ----------------------
           rateLimitConfigs:
             refs:
-            - name: global-limit
-              namespace: gloo-system
+              - name: global-limit
+                namespace: gloo-system

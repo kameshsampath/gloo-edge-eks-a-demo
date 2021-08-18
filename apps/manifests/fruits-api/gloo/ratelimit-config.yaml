@@ -6,12 +6,12 @@ metadata:
 spec:
   raw:
     descriptors:
-    - key: generic_key
-      value: count
-      rateLimit:
-        requestsPerUnit: 10
-        unit: MINUTE
+      - key: generic_key
+        value: count
+        rateLimit:
+          requestsPerUnit: 10
+          unit: MINUTE
     rateLimits:
-    - actions:
-      - genericKey:
-          descriptorValue: count
+      - actions:
+          - genericKey:
+              descriptorValue: count

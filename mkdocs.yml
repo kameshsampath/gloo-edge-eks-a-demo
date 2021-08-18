@@ -12,7 +12,7 @@ theme:
     - shell
     - bash
 nav:
-  - 'Get Started': "index.md"
+  - 'Overview': "index.md"
   - 'EKS-A Cluster and Gloo Edge Setup': "setup.md"
   - 'Deploy Demo Application': "deploy.md"
 markdown_extensions:
