@@ -1,2 +1,6 @@
-**/*
-!site
+response.json
+README.md
+Dockerfile-=UI
+.editorconfig
+site
+
