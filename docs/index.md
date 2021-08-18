@@ -6,4 +6,5 @@ This instructions accompany the [Get Started with Gloo Edge on eks-A](https://ww
 ## Get Started
 
 * [Setup](./setup.md)
-* [Deploy App](./deploy.md)
+* [Use Gloo Edge with Lambda](./lambda.md)
+* [Use Gloo Edge with Microservice](./microservice.md)
