@@ -13,16 +13,8 @@ The documentation site is now accessible via [localhost:7070](http://localhost:7
 
 ## Build and Run Local site
 
-Install dependencies,
-
 ```shell
-pip install mkdocs && pip install mkdocs-material
+docker run -it --rm -p 8000:8000 -v "$(pwd):/usr/src/app" ghcr.io/kameshsampath/mkdocs-builder
 ```
 
-Start local site
-
-```shell
-mkdocs serve
-```
-
-You can now access site via http://localhost:8000/gloo-edge-eks-a-demo
+You can now access site via [localhost:8000](http://localhost:8000/gloo-edge-eks-a-demo)

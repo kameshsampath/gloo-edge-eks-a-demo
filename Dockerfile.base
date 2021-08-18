@@ -1,0 +1,16 @@
+FROM alpine as builder
+
+USER root
+
+RUN mkdir -p /usr/src/app \
+    && apk update \
+    && apk add python3 py3-pip \
+    && pip3 install mkdocs mkdocs-material
+
+WORKDIR /usr/src/app
+
+VOLUME /usr/src/app
+
+CMD ["mkdocs","serve","-a","0.0.0.0:8000"]
+
+EXPOSE 8000

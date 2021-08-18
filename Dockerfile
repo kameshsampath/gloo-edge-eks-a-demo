@@ -1,13 +1,6 @@
-FROM alpine as builder
+FROM ghcr.io/kameshsampath/mkdocs-builder as builder
 
-USER root
-
-RUN mkdir -p /usr/src/app \
-    && apk update \
-    && apk add python3 py3-pip \
-    && pip3 install mkdocs mkdocs-material
-
-WORKDIR /usr/src/app
+RUN pip3 install -U mkdocs mkdocs-material
 
 ADD . /usr/src/app
 
