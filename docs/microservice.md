@@ -1,18 +1,18 @@
 # Deploy App
 
-The demo application that will be deployed is a simple Fruits REST API. The source code the Fruits API is available [here](https://github.com/kameshsampath/gloo-edge-eks-a-demo){target=blank}.
+The demo application that will be deployed is a simple Fruits microservice. The source code the Fruits API is available [here](https://github.com/kameshsampath/gloo-edge-eks-a-demo){target=blank}.
 
 At the end of this chapter you would have known how to:
 
 - [x] Create Gloo Edge Gateway
-- [x] Add oAuth to the API
-- [x] Do Rate Limiting
-- [x] Do Request/Response Transformation
+- [x] Configure Rate Limiting
+- [x] Configure WAF
+- [x] Configure CORS
 
 ## Deploy Database
 
 ```shell
-kubectl apply -k $DEMO_HOME/apps/manifests/fruits-api/db
+kubectl apply -k $DEMO_HOME/apps/microservice/fruits-api/db
 ```
 
 Wait for the DB to be up
@@ -32,7 +32,7 @@ deployment "postgresql" successfully rolled out
 ## Deploy REST API
 
 ```shell
-kubectl apply -k $DEMO_HOME/apps/manifests/fruits-api/app
+kubectl apply -k $DEMO_HOME/apps/microservice/fruits-api/app
 ```
 
 Wait for the REST API to be up
@@ -92,17 +92,7 @@ metadata:
 spec:
   displayName: FruitsAPI
   virtualHost:
-    options:
-      cors: #(1)
-        allowOriginRegex:
-          - '^http(s)?:\/\/localhost:[0-9]{4,5}$'
-        allowHeaders:
-          - origin
-          - content-type
-        allowMethods:
-          - DELETE
-        maxAge: 1d
-    domains:
+    domains: # (1)
       - "*"
     routes:
       # Application Routes
@@ -119,16 +109,15 @@ spec:
 
 ```
 
-1. CORS Policy to apply
-2. Domains that will be allowed by the Gateway
-3. The prefix to access the API
-4. The upstream that wil be used to route the request
-5. The url rewrite to do before passing the request to backend
+1. Domains that will be allowed by the Gateway
+2. The prefix to access the API
+3. The upstream that wil be used to route the request
+4. The url rewrite to do before passing the request to backend
 
 Let us create the virutal service,
 
 ```shell
-kubectl apply -n gloo-system -f $DEMO_HOME/apps/manifests/fruits-api/gloo/virtual-service.yaml
+kubectl apply -n gloo-system -f $DEMO_HOME/apps/microservice/fruits-api/gloo/virtual-service.yaml
 ```
 
 Check the status of the virtual service
@@ -144,6 +133,8 @@ glooctl get vs fruits-api
 | fruits-api      |              | *       | none | Accepted |                 | / -> 1 destinations |
 ----------------------------------------------------------------------------------------------
 ```
+
+## Invoke API
 
 We need to use the Gloo proxy to access the API, we can use glooctl to get the proxy URL,
 
@@ -204,13 +195,13 @@ spec:
 Let us apply the rate limiting configuration,
 
 ```shell
-kubectl apply -n gloo-system -f $DEMO_HOME/apps/manifests/fruits-api/gloo/ratelimit-config.yaml
+kubectl apply -n gloo-system -f $DEMO_HOME/apps/microservice/fruits-api/gloo/ratelimit-config.yaml
 ```
 
 Update the service with ratelimit,
 
 ```shell
-kubectl apply -n gloo-system -f $DEMO_HOME/apps/manifests/fruits-api/gloo/virtual-service.yaml
+kubectl apply -n gloo-system -f $DEMO_HOME/apps/microservice/fruits-api/gloo/virtual-service-ratelimit.yaml
 ```
 
 Let us now send requests to the API, with our current configuration we should start to get `HTTP 429` once we exceed 10 requests,
@@ -275,7 +266,7 @@ spec:
 Let us update the Virtual Service with WAF enabled,
 
 ```shell
-kubectl apply -n gloo-system -f $DEMO_HOME/apps/manifests/fruits-api/gloo/virtual-service-waf.yaml
+kubectl apply -n gloo-system -f $DEMO_HOME/apps/microservice/fruits-api/gloo/virtual-service-waf.yaml
 ```
 
 Try simulating the API request as if it was generated from *Firefox* browser:
@@ -390,7 +381,7 @@ spec:
 Now let us update the virtual service,
 
 ```shell
-kubectl apply -n gloo-system -f $DEMO_HOME/apps/manifests/fruits-api/gloo/virtual-service-cors.yaml
+kubectl apply -n gloo-system -f $DEMO_HOME/apps/microservice/fruits-api/gloo/virtual-service-cors.yaml
 ```
 
 Now try refreshing the browser url [localhost:8085](http://localhost:8085) and you will see a list of fruits as shown without any CORS errors.
@@ -399,4 +390,4 @@ Now try refreshing the browser url [localhost:8085](http://localhost:8085) and y
 
 ---8<--- "includes/abbrevations.md"
 
----8<--- "app/manifests/fruits-api/app/deployment.yaml"
+---8<--- "app/microservice/fruits-api/app/deployment.yaml"

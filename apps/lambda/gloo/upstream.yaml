@@ -1,0 +1,12 @@
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  name: gloo-edge-hello-lambda
+  namespace: gloo-system
+spec:
+  aws:
+    # update to your region
+    region: us-east-1
+    secretRef:
+      name: gloo-eks-a-demo
+      namespace: gloo-system

@@ -1,0 +1,29 @@
+apiVersion: gateway.solo.io/v1
+kind: VirtualService
+metadata:
+  name: greeter
+  namespace: gloo-system
+spec:
+  displayName: AWS Lambda Greeter
+  virtualHost:
+    domains:
+      - "example.com"
+    routes:
+      # Application Routes
+      # ------------
+      - matchers:
+          - exact: /greet
+        routeAction:
+          single:
+            destinationSpec:
+              aws:
+                logicalName: gloo-edge-hello-lambda
+            upstream:
+              name: gloo-edge-hello-lambda
+              namespace: gloo-system
+        options:
+          # ---------------- Rate limit config ----------------------
+          rateLimitConfigs:
+            refs:
+              - name: lambda-global-limit
+                namespace: gloo-system

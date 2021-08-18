@@ -14,7 +14,8 @@ theme:
 nav:
   - 'Overview': "index.md"
   - 'EKS-A Cluster and Gloo Edge Setup': "setup.md"
-  - 'Deploy Demo Application': "deploy.md"
+  - 'Lambda': "lambda.md"
+  - 'Microservice': "microservice.md"
 markdown_extensions:
   - toc:
       baselevel: 1
