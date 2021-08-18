@@ -1,0 +1,43 @@
+site_name: EKS-A Gloo Edge Demo
+site_url: https://kameshsampath.github.io/eks-a-gloo-edge-demo
+theme:
+  name: material
+  features:
+    - content.code.annotate
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - shell
+nav:
+  - Home: "index.md"
+  - Setup: "setup.md"
+  - Demo: "deploy.md"
+markdown_extensions:
+  - toc:
+      baselevel: 1
+      permalink: "&para;"
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - pymdownx.caret
+  - pymdownx.critic:
+      mode: view
+  - pymdownx.tabbed
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.details
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tasklist:
+      custom_checkbox: true
+

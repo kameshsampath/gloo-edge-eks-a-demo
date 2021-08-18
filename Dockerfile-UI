@@ -1,0 +1,23 @@
+FROM node:14 as builder
+
+ARG GLOO_PROXY_URL 
+
+USER root
+
+RUN mkdir -p /usr/src/app \
+  && git clone https://github.com/kameshsampath/fruits-app-ui /usr/src/app \
+  && echo "REACT_APP_API_HOST=$GLOO_PROXY_URL/api/" > /usr/src/app/.env \
+  && cp /usr/src/app/.env  /usr/src/app/.env.local
+
+WORKDIR /usr/src/app
+
+ADD . /usr/src/app
+
+RUN cd /usr/src/app \
+  && npm install \
+  && npm install -g react-scripts \
+  && npm run build
+
+FROM registry.access.redhat.com/rhscl/httpd-24-rhel7
+
+COPY --from=builder usr/src/app/build/ /var/www/html/

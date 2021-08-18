@@ -8,6 +8,7 @@ spec:
   virtualHost:
     options:
       cors:
+        # TODO update
         allowOriginRegex:
           - '^http(s)?:\/\/localhost:[0-9]{4,5}$'
         allowHeaders:
@@ -19,10 +20,14 @@ spec:
     domains:
       - "*"
     routes:
+      # Application Routes
+      # ------------
       - matchers:
-          - prefix: /
+          - prefix: /api/
         routeAction:
           single:
             upstream:
               name: fruits-app-fruits-api-8080
               namespace: gloo-system
+        options:
+          prefixRewrite: /v1/api/

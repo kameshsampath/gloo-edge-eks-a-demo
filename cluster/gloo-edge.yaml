@@ -1,0 +1,38 @@
+apiVersion: anywhere.eks.amazonaws.com/v1alpha1
+kind: Cluster
+metadata:
+  name: gloo-edge
+spec:
+  controlPlaneReplicas: 1
+  infrastructureRef:
+    apiVersion: anywhere.eks.amazonaws.com/v1alpha1
+    kind: VSphereCluster
+    name: gloo-edge
+  kubernetesVersion: "1.20"
+  workerNodeReplicas: 2
+---
+apiVersion: anywhere.eks.amazonaws.com/v1alpha1
+kind: VSphereCluster
+metadata:
+  name: vcenter
+spec:
+  controlPlaneDiskGiB: 25
+  # update to your network ip
+  controlPlaneEndpointIp: "192.168.0.206"
+  controlPlaneVMsMemoryMiB: 8192
+  controlPlaneVMsNumCPUs: 2
+  datacenter: "Solo-EKS-A-Demo-Datacenter"
+  datastore: "/Solo-EKS-A-Demo-Datacenter/datastore/datastore1"
+  folder: "gloo-edge-vms"
+  network: "/Solo-EKS-A-Demo-Datacenter/network/VM Network"
+  resourcePool: "*/Resources"
+  server: "163.172.240.130"
+  sshUsername: capv
+  sshAuthorizedKey: ""
+  template: "SoloTemplates/ubuntu-2004-kube-v1.20.7"
+  tlsInsecure: true
+  # update to vcenter thumbprint
+  tlsThumbprint: "76:C2:CF:C8:32:04:14:97:5F:7E:87:F7:5C:EB:31:25:CB:41:18:8A"
+  workloadDiskGiB: 25
+  workloadVMsMemoryMiB: 8192
+  workloadVMsNumCPUs: 4
