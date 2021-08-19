@@ -25,3 +25,5 @@ kind-cluster-config.yml
 .envrc
 site
 response.json
+*.tar.gz
+  

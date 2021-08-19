@@ -384,6 +384,6 @@ As part of this short blog we,
 - [x] Deployed Gloo Edges
 - [x] And finally invoked an AWS Lambda function via Gloo Edge gateway
 
-Gloo Edge is not restricted to AWS Lambda, it can also be used to connect traditional microservices. Head over to the [tutorial](./tutorial.md) to learn more on what other thigns you can do with Gloo Edge.
+Gloo Edge is not restricted to AWS Lambda, it can also be used to connect traditional microservices. Head over to the [tutorial](./index.md) to learn more on what other thigns you can do with Gloo Edge.
 
 {== Any other CTA ==}

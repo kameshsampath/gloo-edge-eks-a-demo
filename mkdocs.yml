@@ -15,7 +15,7 @@ theme:
 nav:
   - 'Gloo Edge on EKS-A in 5 minutes': "blog.md"
   - 'Tutorial':
-    - 'Overview': "tutorial.md"
+    - 'Overview': "index.md"
     - 'Setup': "setup.md"
     - "Gloo Edge with AWS Lambda": "lambda.md"
     - "Gloo Edge with Microservice": "microservice.md"
