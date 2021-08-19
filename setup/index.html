@@ -16,7 +16,7 @@
     
     
       
-        <title>EKS-A Cluster and Gloo Edge Setup - EKS-A Gloo Edge Demo</title>
+        <title>Setup - EKS-A Gloo Edge</title>
       
     
     
@@ -74,7 +74,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="EKS-A Gloo Edge Demo" class="md-header__button md-logo" aria-label="EKS-A Gloo Edge Demo" data-md-component="logo">
+    <a href=".." title="EKS-A Gloo Edge" class="md-header__button md-logo" aria-label="EKS-A Gloo Edge" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -87,13 +87,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            EKS-A Gloo Edge Demo
+            EKS-A Gloo Edge
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              EKS-A Cluster and Gloo Edge Setup
+              Setup
             
           </span>
         </div>
@@ -158,13 +158,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="EKS-A Gloo Edge Demo" class="md-nav__button md-logo" aria-label="EKS-A Gloo Edge Demo" data-md-component="logo">
+    <a href=".." title="EKS-A Gloo Edge" class="md-nav__button md-logo" aria-label="EKS-A Gloo Edge" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    EKS-A Gloo Edge Demo
+    EKS-A Gloo Edge
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -177,8 +177,8 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
-        Overview
+      <a href="../blog/" class="md-nav__link">
+        Gloo Edge on EKS-A in 5 minutes
       </a>
     </li>
   
@@ -193,6 +193,41 @@
     
   
   
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Tutorial
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tutorial" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorial
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
@@ -202,12 +237,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          EKS-A Cluster and Gloo Edge Setup
+          Setup
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        EKS-A Cluster and Gloo Edge Setup
+        Setup
       </a>
       
         
@@ -239,15 +274,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-cluster" class="md-nav__link">
-    Create Cluster
+  <a href="#eks-a-cluster" class="md-nav__link">
+    EKS-A Cluster
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-storage-class" class="md-nav__link">
-    Install Storage Class
+  <a href="#configure-storage-class" class="md-nav__link">
+    Configure Storage Class
   </a>
   
 </li>
@@ -266,33 +301,33 @@
     </li>
   
 
-    
-      
-      
-      
-
+          
+            
   
   
   
     <li class="md-nav__item">
       <a href="../lambda/" class="md-nav__link">
-        Lambda
+        Gloo Edge with AWS Lambda
       </a>
     </li>
   
 
-    
-      
-      
-      
-
+          
+            
   
   
   
     <li class="md-nav__item">
       <a href="../microservice/" class="md-nav__link">
-        Microservice
+        Gloo Edge with Microservice
       </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -337,15 +372,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-cluster" class="md-nav__link">
-    Create Cluster
+  <a href="#eks-a-cluster" class="md-nav__link">
+    EKS-A Cluster
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-storage-class" class="md-nav__link">
-    Install Storage Class
+  <a href="#configure-storage-class" class="md-nav__link">
+    Configure Storage Class
   </a>
   
 </li>
@@ -376,6 +411,7 @@
 <ul>
 <li><a href="https://example.com/eks-a" target="_blank">eks-a</a></li>
 <li><a href="https://docs.solo.io/gloo-edge/latest/getting_started/" target="_blank">glooctl</a></li>
+<li><a href="https://stedolan.github.io/jq/" target="_blank">jq</a></li>
 <li><a href="https://kubectl.docs.kubernetes.io/installation/kubectl/" target="_blank">kubectl</a></li>
 <li><a href="https://kubectl.docs.kubernetes.io/installation/kustomize/" target="_blank">kustomize</a></li>
 <li>Gloo Edge Enterprise License Key</li>
@@ -389,10 +425,14 @@
 <p>For convinience, we will refer the clone demo sources folder as <code>$DEMO_HOME</code>,</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">DEMO_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div>
-<h2 id="create-cluster">Create Cluster<a class="headerlink" href="#create-cluster" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>eks-a create cluster -f cluster/gloo-edge.yaml
+<h2 id="eks-a-cluster">EKS-A Cluster<a class="headerlink" href="#eks-a-cluster" title="Permanent link">&para;</a></h2>
+<p>To create the EKS-A cluster run the following command,</p>
+<div class="highlight"><pre><span></span><code>eks-a create cluster -f cluster/gloo-edge.yaml <span class="c1"># (1)</span>
 </code></pre></div>
-<h2 id="install-storage-class">Install Storage Class<a class="headerlink" href="#install-storage-class" title="Permanent link">&para;</a></h2>
+<ol>
+<li><code>gloo-edge.yaml</code>- will be generated using the <code>eks-a generate</code> command. For more information on the command please refer to <mark class="critic"> <strong>TODO</strong> Link to eks-a docs </mark>.</li>
+</ol>
+<h2 id="configure-storage-class">Configure Storage Class<a class="headerlink" href="#configure-storage-class" title="Permanent link">&para;</a></h2>
 <p>The demo clusters does not have default storage provisoners or storage class defined. For this demo we will use rancher&rsquo;s <a href="https://github.com/rancher/local-path-provisioner">local-path-provisoner</a>.</p>
 <div class="highlight"><pre><span></span><code>kubectl apply <span class="se">\</span>
   -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
@@ -405,12 +445,13 @@
   -p <span class="s1">&#39;{&quot;metadata&quot;: {&quot;annotations&quot;:{&quot;storageclass.kubernetes.io/is-default-class&quot;:&quot;true&quot;}}}&#39;</span>
 </code></pre></div>
 <h2 id="install-gloo-edge-enterprise">Install Gloo Edge Enterprise<a class="headerlink" href="#install-gloo-edge-enterprise" title="Permanent link">&para;</a></h2>
-<p>You can download latest glooctl by,</p>
+<p>Download and install latest <strong>glooctl</strong> by running,</p>
 <div class="highlight"><pre><span></span><code>curl -sL https://run.solo.io/gloo/install <span class="p">|</span> sh
 </code></pre></div>
 <p>Add glooctl to the system path,</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/.gloo/bin:<span class="nv">$PATH</span>
 </code></pre></div>
+<p>Gloo Edge proxy is a Kubernetes service of type <code>LoadBalancer</code>, for the purpose of this blog we will configure it to be of type <code>NodePort</code> as shown below,</p>
 <div class="highlight"><pre><span></span><code><span class="nt">gloo</span><span class="p">:</span>
   <span class="nt">settings</span><span class="p">:</span>
     <span class="nt">writeNamespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gloo-system</span>
@@ -421,9 +462,9 @@
     <span class="nt">gatewayProxy</span><span class="p">:</span>
       <span class="nt">service</span><span class="p">:</span>
         <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NodePort</span>
-        <span class="nt">httpNodePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30080</span> <span class="c1"># (1)</span>
-        <span class="nt">httpsNodePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30443</span> <span class="c1"># (2)</span>
-</code></pre></div>
+<span class="hll">        <span class="nt">httpNodePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30080</span> <span class="c1"># (1)</span>
+</span><span class="hll">        <span class="nt">httpsNodePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30443</span> <span class="c1"># (2)</span>
+</span></code></pre></div>
 <ol>
 <li>Use <code>30080</code> as NodePort to access the Gloo Proxy</li>
 <li>Use <code>30443</code> as NodePort to access the Gloo Proxy</li>
@@ -481,7 +522,7 @@ Detected Gloo Federation!
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
+        <a href="../tutorial/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -497,13 +538,13 @@ Detected Gloo Federation!
       
       
         
-        <a href="../lambda/" class="md-footer__link md-footer__link--next" aria-label="Next: Lambda" rel="next">
+        <a href="../lambda/" class="md-footer__link md-footer__link--next" aria-label="Next: Gloo Edge with AWS Lambda" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Lambda
+              Gloo Edge with AWS Lambda
             </div>
           </div>
           <div class="md-footer__button md-icon">

@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://kameshsampath.github.io/gloo-edge-eks-a-demo/lambda/">
+        <link rel="canonical" href="https://kameshsampath.github.io/gloo-edge-eks-a-demo/blog/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
-        <title>Gloo Edge with AWS Lambda - EKS-A Gloo Edge</title>
+        <title>Gloo Edge on EKS-A in 5 minutes - EKS-A Gloo Edge</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws-lambda" class="md-skip">
+        <a href="#gloo-edge-on-eks-a-in-5-minutes" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gloo Edge with AWS Lambda
+              Gloo Edge on EKS-A in 5 minutes
             
           </span>
         </div>
@@ -175,11 +175,194 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../blog/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Gloo Edge on EKS-A in 5 minutes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Gloo Edge on EKS-A in 5 minutes
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-we-need" class="md-nav__link">
+    What we need ?
+  </a>
+  
+    <nav class="md-nav" aria-label="What we need ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloud-infrastructure" class="md-nav__link">
+    Cloud Infrastructure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    Tools
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo-sources" class="md-nav__link">
+    Demo Sources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ensure-environment" class="md-nav__link">
+    Ensure Environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eks-a-cluster" class="md-nav__link">
+    EKS-A Cluster
+  </a>
+  
+    <nav class="md-nav" aria-label="EKS-A Cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-storage-class" class="md-nav__link">
+    Configure Storage Class
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-gloo-edge-enterprise" class="md-nav__link">
+    Install Gloo Edge Enterprise
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-aws-lambda-function" class="md-nav__link">
+    Deploy AWS Lambda Function
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy AWS Lambda Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-aws-iam-role" class="md-nav__link">
+    Create AWS IAM Role
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-lambda-function" class="md-nav__link">
+    Create Lambda Function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gloo-edge" class="md-nav__link">
+    Gloo Edge
+  </a>
+  
+    <nav class="md-nav" aria-label="Gloo Edge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-aws-secret" class="md-nav__link">
+    Create AWS Secret
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-upstream" class="md-nav__link">
+    Create Upstream
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-route" class="md-nav__link">
+    Create Route
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invoke-function" class="md-nav__link">
+    Invoke Function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -190,14 +373,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
       <label class="md-nav__link" for="__nav_2">
         Tutorial
@@ -237,140 +418,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Gloo Edge with AWS Lambda
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../lambda/" class="md-nav__link">
         Gloo Edge with AWS Lambda
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#pre-requsites" class="md-nav__link">
-    Pre-requsites
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ensure-environment" class="md-nav__link">
-    Ensure Environment
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deploy-aws-lambda-function" class="md-nav__link">
-    Deploy AWS Lambda Function
-  </a>
-  
-    <nav class="md-nav" aria-label="Deploy AWS Lambda Function">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-role" class="md-nav__link">
-    Create Role
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-function" class="md-nav__link">
-    Create Function
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gloo-edge" class="md-nav__link">
-    Gloo Edge
-  </a>
-  
-    <nav class="md-nav" aria-label="Gloo Edge">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-aws-secret" class="md-nav__link">
-    Create AWS Secret
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-upstreams" class="md-nav__link">
-    Create Upstreams
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#route" class="md-nav__link">
-    Route
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#invoke-the-api" class="md-nav__link">
-    Invoke the API
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rate-limit" class="md-nav__link">
-    Rate Limit
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#web-application-firewall" class="md-nav__link">
-    Web Application Firewall
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -419,8 +471,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pre-requsites" class="md-nav__link">
-    Pre-requsites
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-we-need" class="md-nav__link">
+    What we need ?
+  </a>
+  
+    <nav class="md-nav" aria-label="What we need ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloud-infrastructure" class="md-nav__link">
+    Cloud Infrastructure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    Tools
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo-sources" class="md-nav__link">
+    Demo Sources
   </a>
   
 </li>
@@ -428,6 +514,33 @@
         <li class="md-nav__item">
   <a href="#ensure-environment" class="md-nav__link">
     Ensure Environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eks-a-cluster" class="md-nav__link">
+    EKS-A Cluster
+  </a>
+  
+    <nav class="md-nav" aria-label="EKS-A Cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-storage-class" class="md-nav__link">
+    Configure Storage Class
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-gloo-edge-enterprise" class="md-nav__link">
+    Install Gloo Edge Enterprise
   </a>
   
 </li>
@@ -441,15 +554,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-role" class="md-nav__link">
-    Create Role
+  <a href="#create-aws-iam-role" class="md-nav__link">
+    Create AWS IAM Role
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-function" class="md-nav__link">
-    Create Function
+  <a href="#create-lambda-function" class="md-nav__link">
+    Create Lambda Function
   </a>
   
 </li>
@@ -475,15 +588,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-upstreams" class="md-nav__link">
-    Create Upstreams
+  <a href="#create-upstream" class="md-nav__link">
+    Create Upstream
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#route" class="md-nav__link">
-    Route
+  <a href="#create-route" class="md-nav__link">
+    Create Route
   </a>
   
 </li>
@@ -494,22 +607,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#invoke-the-api" class="md-nav__link">
-    Invoke the API
+  <a href="#invoke-function" class="md-nav__link">
+    Invoke Function
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#rate-limit" class="md-nav__link">
-    Rate Limit
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#web-application-firewall" class="md-nav__link">
-    Web Application Firewall
+  <a href="#summary" class="md-nav__link">
+    Summary
   </a>
   
 </li>
@@ -527,37 +633,121 @@
               
                 
                 
-                <h1 id="aws-lambda"><abbr title="Amazon Web Services">AWS</abbr> Lambda<a class="headerlink" href="#aws-lambda" title="Permanent link">&para;</a></h1>
-<p>Gloo Edge can act as gateway to <a href="https://aws.amazon.com/lambda/"><abbr title="Amazon Web Services">AWS</abbr> Lambda</a> functions.</p>
-<p>At the end of this chapter you would have known how to:</p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Create Gloo <abbr title="Amazon Web Services">AWS</abbr> Lambda Upstream</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Create Gloo Edge Gateway</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Configure Rate Limiting</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Configure <abbr title="Web Application Firewall">WAF</abbr></li>
-</ul>
-<h2 id="pre-requsites">Pre-requsites<a class="headerlink" href="#pre-requsites" title="Permanent link">&para;</a></h2>
+                <h1 id="gloo-edge-on-eks-a-in-5-minutes">Gloo Edge on EKS-A in 5 minutes<a class="headerlink" href="#gloo-edge-on-eks-a-in-5-minutes" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>In my personal opinion there is always a myth that API Gateways are for cloud or can only with be used with public cloud providers. But that is not the truth, API Gateways are suited for any architecture public, private or hybrid cloud. The only basic requirement for it is to have API ;).</p>
+<p><a href="https://www.solo.io/products/gloo-edge/">Gloo Edge</a> is an open-source, flexible and extensible API Gateway built on Envoy Proxy for microservices environments. Gloo Edge configures the behavior of the Envoy Proxy data plane to ensure secure application connectivity and policy based traffic management.</p>
+<p><img align="center" alt="Gloo Edge" src="../images/blog_feature.png" /></p>
+<p>In this blog post, let us burst the myth and explore how we can setup API Gateway with Gloo Edge in <em>hybrid cloud</em> infrastructure with EKS-A and connect a AWS Lambda function using Gloo Edge.</p>
+<h2 id="what-we-need">What we need ?<a class="headerlink" href="#what-we-need" title="Permanent link">&para;</a></h2>
+<h3 id="cloud-infrastructure">Cloud Infrastructure<a class="headerlink" href="#cloud-infrastructure" title="Permanent link">&para;</a></h3>
 <ul>
-<li><abbr title="Amazon Web Services">AWS</abbr> Account</li>
-<li><abbr title="Amazon Web Services">AWS</abbr> Access Key</li>
-<li><abbr title="Amazon Web Services">AWS</abbr> Secret Key</li>
+<li><a href="https://vmc.vmware.com" target="_blank">VMWare Cloud</a> - Infrastructure to deploy <code>eks-a</code>Kubernetes cluster.</li>
 </ul>
+<p><a href="https://aws.amazon.com" target="_blank">AWS Account</a> - An AWS account with permissions to create and execute AWS Lambda Function.</p>
+<h3 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://example.com/eks-a" target="_blank">eks-a</a></li>
+<li><a href="https://docs.solo.io/gloo-edge/latest/getting_started/" target="_blank">glooctl</a></li>
+<li><a href="https://stedolan.github.io/jq/" target="_blank">jq</a></li>
+<li><a href="https://kubectl.docs.kubernetes.io/installation/kubectl/" target="_blank">kubectl</a></li>
+<li><a href="https://kubectl.docs.kubernetes.io/installation/kustomize/" target="_blank">kustomize</a></li>
+</ul>
+<p>Lastly you might need <em>Gloo Edge Enterprise License Key</em> to deploy Gloo Edge on to the eks-a infrastructure.</p>
+<h2 id="demo-sources">Demo Sources<a class="headerlink" href="#demo-sources" title="Permanent link">&para;</a></h2>
+<p>Clone the demo sources from the GitHub respository,</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/kameshsampath/gloo-edge-eks-a-demo
+<span class="nb">cd</span> gloo-edge-eks-a-demo
+</code></pre></div>
+<p>For convinience, we will refer the clone demo sources folder as <code>$DEMO_HOME</code>,</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">DEMO_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
 <h2 id="ensure-environment">Ensure Environment<a class="headerlink" href="#ensure-environment" title="Permanent link">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul>
-<li>If you already have the environment variables set with same name, you can ignore this section</li>
-<li>If not set, Gloo Edge tends to compute these values from <code>$HOME/.aws/credentials</code></li>
-<li>Its recommended to set these values for better clarity</li>
-</ul>
-</div>
-<p>As we need to interact with <abbr title="Amazon Web Services">AWS</abbr> services, we will set the following environment variables,</p>
+<p>We will set the following environment variables for convinience and we will be referring to these variables in upcoming sections.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>&lt;your aws access key&gt;
 <span class="nb">export</span> <span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>&lt;your aws secret key&gt;
 <span class="nb">export</span> <span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>&lt;the aws region to use <span class="k">for</span> the resources&gt;
 </code></pre></div>
-<h2 id="deploy-aws-lambda-function">Deploy <abbr title="Amazon Web Services">AWS</abbr> Lambda Function<a class="headerlink" href="#deploy-aws-lambda-function" title="Permanent link">&para;</a></h2>
-<h3 id="create-role">Create Role<a class="headerlink" href="#create-role" title="Permanent link">&para;</a></h3>
+<h2 id="eks-a-cluster">EKS-A Cluster<a class="headerlink" href="#eks-a-cluster" title="Permanent link">&para;</a></h2>
+<p>To create the EKS cluster run the follwing command,</p>
+<div class="highlight"><pre><span></span><code>eks-a create cluster -f gloo-edge.yaml <span class="c1"># (1)</span>
+</code></pre></div>
+<ol>
+<li><code>gloo-edge.yaml</code>- will be generated using the <code>eks-a generate</code> command. For more information on the command please refer to <mark class="critic"> <strong>TODO</strong> Link to eks-a docs </mark>.</li>
+</ol>
+<h3 id="configure-storage-class">Configure Storage Class<a class="headerlink" href="#configure-storage-class" title="Permanent link">&para;</a></h3>
+<p>The demo clusters does not have any default storage provisoners or storage class defined. For this demo we will use rancher&rsquo;s <a href="https://github.com/rancher/local-path-provisioner">local-path-provisoner</a>.</p>
+<div class="highlight"><pre><span></span><code>kubectl apply <span class="se">\</span>
+  -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
+</code></pre></div>
+<p>Wait for the storage provisioner to be ready,</p>
+<div class="highlight"><pre><span></span><code>kubectl rollout status -n local-path-storage deploy/local-path-provisioner --timeout<span class="o">=</span>60s
+</code></pre></div>
+<p>Set it as default storage class so that any new PVC requests will be created using this Storage class&rsquo; underlying storage.</p>
+<div class="highlight"><pre><span></span><code>kubectl patch storageclass local-path <span class="se">\</span>
+  -p <span class="s1">&#39;{&quot;metadata&quot;: {&quot;annotations&quot;:{&quot;storageclass.kubernetes.io/is-default-class&quot;:&quot;true&quot;}}}&#39;</span>
+</code></pre></div>
+<h2 id="install-gloo-edge-enterprise">Install Gloo Edge Enterprise<a class="headerlink" href="#install-gloo-edge-enterprise" title="Permanent link">&para;</a></h2>
+<p>Download and install latest <strong>glooctl</strong> by running,</p>
+<div class="highlight"><pre><span></span><code>curl -sL https://run.solo.io/gloo/install <span class="p">|</span> sh
+</code></pre></div>
+<p>Add glooctl to the system path,</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/.gloo/bin:<span class="nv">$PATH</span>
+</code></pre></div>
+<p>Gloo Edge proxy is a Kubernetes service of type <code>LoadBalancer</code>, for the purpose of this blog we will configure it to be of type <code>NodePort</code> using the <code>install-ee-values.yaml</code> as shown below,</p>
+<div class="highlight"><pre><span></span><code><span class="nt">gloo</span><span class="p">:</span>
+  <span class="nt">settings</span><span class="p">:</span>
+    <span class="nt">writeNamespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gloo-system</span>
+    <span class="nt">watchNamespace</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gloo-system</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">fruits-app</span>
+  <span class="nt">gatewayProxies</span><span class="p">:</span>
+    <span class="nt">gatewayProxy</span><span class="p">:</span>
+      <span class="nt">service</span><span class="p">:</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NodePort</span>
+<span class="hll">        <span class="nt">httpNodePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30080</span> <span class="c1"># (1)</span>
+</span><span class="hll">        <span class="nt">httpsNodePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30443</span> <span class="c1"># (2)</span>
+</span></code></pre></div>
+<ol>
+<li>Use <code>30080</code> as NodePort to access the Gloo Proxy</li>
+<li>Use <code>30443</code> as NodePort to access the Gloo Proxy</li>
+</ol>
+<div class="highlight"><pre><span></span><code>glooctl install gateway enterprise <span class="se">\</span>
+  --license-key <span class="s2">&quot;</span><span class="nv">$GLOO_LICENSE_KEY</span><span class="s2">&quot;</span> <span class="se">\</span>
+  --values <span class="s2">&quot;</span><span class="nv">$DEMO_HOME</span><span class="s2">/cluster/install-ee-values.yaml&quot;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>You can safely ignore the helm warnings</li>
+<li>It will take few minutes for the gloo to be ready, try the command <code>glooctl check</code> to verify the status.</li>
+</ul>
+</div>
+<p>Once the gloo edge is deployed check if Gloo Edge is functional,</p>
+<div class="highlight"><pre><span></span><code>glooctl check
+</code></pre></div>
+<p>A successful gloo edge installation should show an output like,</p>
+<div class="highlight"><pre><span></span><code>Checking deployments... OK
+Checking pods... OK
+Checking upstreams... OK
+Checking upstream groups... OK
+Checking auth configs... OK
+Checking rate limit configs... OK
+Checking VirtualHostOptions... OK
+Checking RouteOptions... OK
+Checking secrets... OK
+Checking virtual services... OK
+Checking gateways... OK
+Checking proxies... OK
+Checking rate limit server... OK
+No problems detected.
+I0818 09:29:26.773174    6734 request.go:645] Throttling request took 1.041899775s, request: GET:https://127.0.0.1:57778/apis/storage.k8s.io/v1?timeout=32s
+
+Detected Gloo Federation!
+</code></pre></div>
+<h2 id="deploy-aws-lambda-function">Deploy AWS Lambda Function<a class="headerlink" href="#deploy-aws-lambda-function" title="Permanent link">&para;</a></h2>
+<p>With us having created an eks-a cluster and deployed Gloo Edge on to it successfully, let us now create <a href="https://aws.amazon.com/lambda/">AWS Lambda</a> function and use Gloo Edge to invoke it.</p>
+<h3 id="create-aws-iam-role">Create AWS IAM Role<a class="headerlink" href="#create-aws-iam-role" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>aws iam create-role --role-name gloo-edge-eks-a-lambdaex <span class="se">\</span>
    --assume-role-policy-document <span class="s2">&quot;file://</span><span class="nv">$DEMO_HOME</span><span class="s2">/apps/lambda/trust-policy.json&quot;</span>
 </code></pre></div>
@@ -568,7 +758,7 @@
 <div class="highlight"><pre><span></span><code>aws iam attach-role-policy --role-name gloo-edge-eks-a-lambdaex <span class="se">\</span>
   --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
 </code></pre></div>
-<h3 id="create-function">Create Function<a class="headerlink" href="#create-function" title="Permanent link">&para;</a></h3>
+<h3 id="create-lambda-function">Create Lambda Function<a class="headerlink" href="#create-lambda-function" title="Permanent link">&para;</a></h3>
 <p>The demo already has ready to deploy simple nodejs hello world application,</p>
 <div class="highlight"><pre><span></span><code><span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="p">{</span>
@@ -578,7 +768,7 @@
   <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>Deploy the lambda,</p>
+<p>Let us deploy that function using AWS Lambda,</p>
 <div class="highlight"><pre><span></span><code>aws lambda create-function --function-name gloo-edge-hello-lambda <span class="se">\</span>
 --zip-file <span class="s2">&quot;fileb://</span><span class="nv">$DEMO_HOME</span><span class="s2">/apps/lambda/function.zip&quot;</span> <span class="se">\</span>
 --handler index.handler <span class="se">\</span>
@@ -599,15 +789,15 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="gloo-edge">Gloo Edge<a class="headerlink" href="#gloo-edge" title="Permanent link">&para;</a></h2>
-<p>We have now deployed the <abbr title="Amazon Web Services">AWS</abbr> Lambda function, in the upcoming sections we will create the necessary Gloo Edge resources that will allow configure and access the Lambda via Gloo Edge Gateway. To have more understanding on the core concepts check the <a href="https://docs.solo.io/gloo-edge/latest/introduction/traffic_management/" target="_blank">Traffic Management</a> documentation.</p>
-<p>In the upcoming sections we will,</p>
+<p>We have now deployed the AWS Lambda function, let us now create the necessary Gloo Edge resources that will allow configure and access the Lambda via Gloo Edge Gateway. To have more understanding on core concepts check the Gloo Edge <a href="https://docs.solo.io/gloo-edge/latest/introduction/architecture/concepts/" target="_blank">documentation</a>.</p>
+<p>As part of this short demo we will,</p>
 <ul>
-<li>Create <abbr title="Amazon Web Services">AWS</abbr> Secret</li>
-<li><a href="https://docs.solo.io/gloo-edge/latest/guides/traffic_management/destination_types/aws_lambda/#create-aws-upstream" target="_blank">Create Upstream</a></li>
-<li><a href="https://docs.solo.io/gloo-edge/latest/introduction/architecture/concepts/#virtual-services" target="_blank">Create Virtual Services</a></li>
+<li>Create AWS Secret</li>
+<li><a href="https://docs.solo.io/gloo-edge/latest/guides/traffic_management/destination_types/aws_lambda/#create-aws-upstream" target="_blank">Create Gloo Upstream</a></li>
+<li><a href="https://docs.solo.io/gloo-edge/latest/introduction/architecture/concepts/#virtual-services" target="_blank">Create Gloo Virtual Services</a></li>
 </ul>
-<h3 id="create-aws-secret">Create <abbr title="Amazon Web Services">AWS</abbr> Secret<a class="headerlink" href="#create-aws-secret" title="Permanent link">&para;</a></h3>
-<p>We need to create Kubernetes secret that holds the <abbr title="Amazon Web Services">AWS</abbr> Keys. This secret will be used by Gloo Edge invoke the <abbr title="Amazon Web Services">AWS</abbr> Lambda function,</p>
+<h3 id="create-aws-secret">Create AWS Secret<a class="headerlink" href="#create-aws-secret" title="Permanent link">&para;</a></h3>
+<p>We need to create Kubernetes secret that holds the AWS Keys. This secret will be used by Gloo Edge invoke the AWS Lambda function,</p>
 <div class="highlight"><pre><span></span><code>glooctl create secret aws <span class="se">\</span>
   --name<span class="o">=</span>gloo-eks-a-demo <span class="se">\</span>
   --access-key<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$AWS_ACCESS_KEY_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
@@ -616,9 +806,8 @@
 <p>You can check the created credentials by,</p>
 <div class="highlight"><pre><span></span><code>kubectl get secrets -n gloo-system gloo-eks-a-demo -o yaml
 </code></pre></div>
-<h3 id="create-upstreams">Create Upstreams<a class="headerlink" href="#create-upstreams" title="Permanent link">&para;</a></h3>
-<p>As part of this section we will create .</p>
-<p>Let us check to see if thats available,</p>
+<h3 id="create-upstream">Create Upstream<a class="headerlink" href="#create-upstream" title="Permanent link">&para;</a></h3>
+<p>As part of this section we will create an Gloo <em>Upstream</em> that will allow the Virutal Service to talk to AWS Lambda via Gloo Edge Gateway,</p>
 <div class="highlight"><pre><span></span><code>glooctl create upstream aws <span class="se">\</span>
   --name<span class="o">=</span><span class="s2">&quot;gloo-edge-hello-lambda&quot;</span> <span class="se">\</span>
   --aws-region<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$AWS_DEFAULT_REGION</span><span class="s2">&quot;</span> <span class="se">\</span>
@@ -639,7 +828,7 @@
 |                        |            |          |                                |
 +------------------------+------------+----------+--------------------------------+
 </code></pre></div>
-<h3 id="route">Route<a class="headerlink" href="#route" title="Permanent link">&para;</a></h3>
+<h3 id="create-route">Create Route<a class="headerlink" href="#create-route" title="Permanent link">&para;</a></h3>
 <p>A Route is a Gloo Virutal Service resource that allows us to access the API i.e. the services that are deployed on to Kubernetes.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gateway.solo.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -669,7 +858,7 @@
 <li>Domains that will be allowed by the Gateway</li>
 <li>The prefix to access the API</li>
 <li>The destination spec type</li>
-<li>in this case <abbr title="Amazon Web Services">AWS</abbr> Lambda function named <code>gloo-edge-hello-lambda</code></li>
+<li>in this case AWS Lambda function named <code>gloo-edge-hello-lambda</code></li>
 <li>The upstream that wil be used to route the request</li>
 </ol>
 <p>Let us create the virutal service,</p>
@@ -686,7 +875,7 @@
 |                 |                    |             |      |          |                 | (upstream)                         |
 +-----------------+--------------------+-------------+------+----------+-----------------+------------------------------------+
 </code></pre></div>
-<h2 id="invoke-the-api">Invoke the API<a class="headerlink" href="#invoke-the-api" title="Permanent link">&para;</a></h2>
+<h2 id="invoke-function">Invoke Function<a class="headerlink" href="#invoke-function" title="Permanent link">&para;</a></h2>
 <p>We need to use the Gloo proxy to access the API, we can use glooctl to get the proxy URL,</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">GLOO_PROXY_URL</span><span class="o">=</span><span class="k">$(</span>glooctl proxy url<span class="k">)</span>
 </code></pre></div>
@@ -711,108 +900,15 @@
 <div class="highlight"><pre><span></span><code>  http POST <span class="nv">$GLOO_PROXY_URL</span>/greet <span class="s1">&#39;Host: example.com&#39;</span> <span class="nv">user</span><span class="o">=</span>tom
 </code></pre></div></p>
 </div>
-<h2 id="rate-limit">Rate Limit<a class="headerlink" href="#rate-limit" title="Permanent link">&para;</a></h2>
-<p>As part of this sectiobn we will configure <a href="https://en.wikipedia.org/wiki/Rate_limiting" targe="_blank">Rate limiting</a>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ratelimit.solo.io/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">RateLimitConfig</span>
-<span class="nt">metadata</span><span class="p">:</span>
-  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">lambda-global-limit</span>
-  <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gloo-system</span>
-<span class="nt">spec</span><span class="p">:</span>
-  <span class="nt">raw</span><span class="p">:</span>
-    <span class="nt">descriptors</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">generic_key</span>
-      <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">count</span>
-      <span class="nt">rateLimit</span><span class="p">:</span>
-        <span class="nt">requestsPerUnit</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span> <span class="c1">#(1)</span>
-        <span class="nt">unit</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MINUTE</span> <span class="c1">#(1)</span>
-    <span class="nt">rateLimits</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">actions</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">genericKey</span><span class="p">:</span>
-          <span class="nt">descriptorValue</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">count</span>
-</code></pre></div>
-<ol>
-<li>Number of requests</li>
-<li>The duration for the request threshold, is this case 1 minute</li>
-</ol>
-<p>Let us apply the rate limiting configuration,</p>
-<div class="highlight"><pre><span></span><code>kubectl apply -n gloo-system -f <span class="nv">$DEMO_HOME</span>/apps/lambda/gloo/ratelimit-config.yaml
-</code></pre></div>
-<p>Update the service with ratelimit,</p>
-<div class="highlight"><pre><span></span><code>kubectl apply -n gloo-system -f <span class="nv">$DEMO_HOME</span>/apps/lambda/gloo/virtual-service-ratelimit.yaml
-</code></pre></div>
-<p>Let us now send requests to the API, with our current configuration we should start to get <code>HTTP 429</code> once we exceed 10 requests,</p>
-<div class="highlight"><pre><span></span><code><span class="nv">$DEMO_HOME</span>/bin/greeter-poll.sh
-</code></pre></div>
-<p>Wait for a minute or more, then try polling again to see the requests getting executed successfully until it reaches another set of <em>10</em> requests.</p>
-<h2 id="web-application-firewall">Web Application Firewall<a class="headerlink" href="#web-application-firewall" title="Permanent link">&para;</a></h2>
-<p>A <abbr title="Web Application Firewall">WAF</abbr> protects web applications by monitoring, filtering and blocking potentially harmful traffic and attacks that can overtake or exploit them.</p>
-<p>Gloo Edge Enterprise includes the ability to enable the ModSecurity <a href="https://docs.solo.io/gloo-edge/latest/guides/security/waf/" target="_blank">Web Application Firewall</a>for any incoming and outgoing HTTP connections.</p>
-<p>For this demo, let us assume that our application will not support payload size of more than <code>1 byte</code>,</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gateway.solo.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
-<span class="nt">metadata</span><span class="p">:</span>
-  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">greeter</span>
-  <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gloo-system</span>
-<span class="nt">spec</span><span class="p">:</span>
-  <span class="nt">displayName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS Lambda Greeter</span>
-  <span class="nt">virtualHost</span><span class="p">:</span>
-    <span class="nt">domains</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="s">&quot;example.com&quot;</span>
-    <span class="nt">options</span><span class="p">:</span>
-      <span class="c1"># -------- Web Application Firewall - Check User-Agent  -----------</span>
-      <span class="nt">waf</span><span class="p">:</span> <span class="c1"># (1)</span>
-        <span class="nt">ruleSets</span><span class="p">:</span> <span class="c1"># (2)</span>
-          <span class="p p-Indicator">-</span> <span class="nt">ruleStr</span><span class="p">:</span> <span class="p p-Indicator">|</span> <span class="c1"># (3)</span>
-              <span class="no">SecRuleEngine On</span>
-              <span class="no">SecRequestBodyLimit 50</span>
-              <span class="no">SecRequestBodyLimitAction Reject</span>
-        <span class="nt">customInterventionMessage</span><span class="p">:</span> <span class="s">&quot;Payload</span><span class="nv"> </span><span class="s">sizes</span><span class="nv"> </span><span class="s">above</span><span class="nv"> </span><span class="s">50</span><span class="nv"> </span><span class="s">bytes</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">allowed&quot;</span> <span class="c1"># (4)</span>
-    <span class="nt">routes</span><span class="p">:</span>
-      <span class="c1"># Application Routes</span>
-      <span class="c1"># ------------</span>
-      <span class="p p-Indicator">-</span> <span class="nt">matchers</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="nt">exact</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/greet</span>
-        <span class="nt">routeAction</span><span class="p">:</span>
-          <span class="nt">single</span><span class="p">:</span>
-            <span class="nt">destinationSpec</span><span class="p">:</span>
-              <span class="nt">aws</span><span class="p">:</span>
-                <span class="nt">logicalName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gloo-edge-hello-lambda</span>
-            <span class="nt">upstream</span><span class="p">:</span>
-              <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gloo-edge-hello-lambda</span>
-              <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gloo-system</span>
-        <span class="nt">options</span><span class="p">:</span>
-          <span class="c1"># ---------------- Rate limit config ----------------------</span>
-          <span class="nt">rateLimitConfigs</span><span class="p">:</span>
-            <span class="nt">refs</span><span class="p">:</span>
-              <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">lambda-global-limit</span>
-                <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gloo-system</span>
-</code></pre></div>
-<ol>
-<li>Define <abbr title="Web Application Firewall">WAF</abbr> rules</li>
-<li>The <abbr title="Web Application Firewall">WAF</abbr> block can have one or more <code>ruleSets</code></li>
-<li>The rule inspects the payload size and if anything greater than 1 byte is rejected</li>
-<li>The message to display for rule voilations</li>
-</ol>
-<p>Let us update the Virtual Service with <abbr title="Web Application Firewall">WAF</abbr> enabled,</p>
-<div class="highlight"><pre><span></span><code>kubectl apply -n gloo-system -f <span class="nv">$DEMO_HOME</span>/apps/lambda/gloo/virtual-service-waf.yaml
-</code></pre></div>
-<p>Try request with payload more than <code>50 bytes</code>:</p>
-<div class="highlight"><pre><span></span><code>http POST <span class="nv">$GLOO_PROXY_URL</span>/greet <span class="s1">&#39;Host: example.com&#39;</span> &lt; <span class="nv">$DEMO_HOME</span>/apps/lambda/doc.json
-</code></pre></div>
-<p>The request should with a response,</p>
-<div class="highlight"><pre><span></span><code><mark class="critic"> HTTP/1.1 403 Forbidden </mark>
-content-length: 40
-content-type: text/plain
-date: Wed, 18 Aug 2021 16:32:02 GMT
-server: envoy
-
-
-<mark class="critic"> Payload sizes above 50 bytes not allowed </mark>
-</code></pre></div>
-<p>Now try the same request with smaller payload size, which should succeeed.</p>
-<div class="highlight"><pre><span></span><code>http POST <span class="nv">$GLOO_PROXY_URL</span>/greet <span class="s1">&#39;Host: example.com&#39;</span> <span class="nv">$GLOO_PROXY_URL</span>/greet <span class="nv">user</span><span class="o">=</span>tom 
-</code></pre></div>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>As part of this short blog we,</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Created EKS-A cluster</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Deployed Gloo Edges</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> And finally invoked an AWS Lambda function via Gloo Edge gateway</li>
+</ul>
+<p>Gloo Edge is not restricted to AWS Lambda, it can also be used to connect traditional microservices. Head over to the <a href="../tutorial/">tutorial</a> to learn more on what other thigns you can do with Gloo Edge.</p>
+<p><mark class="critic"> Any other CTA </mark></p>
                 
               
               
@@ -831,30 +927,15 @@ server: envoy
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        
-        <a href="../setup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Setup" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Setup
-            </div>
-          </div>
-        </a>
-      
       
         
-        <a href="../microservice/" class="md-footer__link md-footer__link--next" aria-label="Next: Gloo Edge with Microservice" rel="next">
+        <a href="../tutorial/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Gloo Edge with Microservice
+              Overview
             </div>
           </div>
           <div class="md-footer__button md-icon">
