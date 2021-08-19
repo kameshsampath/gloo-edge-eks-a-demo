@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+         <loc>https://kameshsampath.github.io/gloo-edge-eks-a-demo/</loc>
+         <lastmod>2021-08-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://kameshsampath.github.io/gloo-edge-eks-a-demo/blog/</loc>
          <lastmod>2021-08-19</lastmod>
          <changefreq>daily</changefreq>
@@ -17,11 +22,6 @@
     </url>
     <url>
          <loc>https://kameshsampath.github.io/gloo-edge-eks-a-demo/setup/</loc>
-         <lastmod>2021-08-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kameshsampath.github.io/gloo-edge-eks-a-demo/tutorial/</loc>
          <lastmod>2021-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
