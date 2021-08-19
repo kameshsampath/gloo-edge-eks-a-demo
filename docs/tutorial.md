@@ -1,3 +1,10 @@
+---
+title: Overview
+summary: EKS-A with Gloo Edge tutorial overview.
+authors:
+  - Kamesh Sampath<kamesh.sampath@hotmail.com>
+date: 2021-08-19
+---
 # Gloo Edge EKS-A Tutorial
 
 As part of this short tutorial we will explore how to setup and use [Gloo Edge](https://www.solo.io/products/gloo-edge/) with EKS-A cluster.

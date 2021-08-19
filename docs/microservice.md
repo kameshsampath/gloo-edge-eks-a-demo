@@ -1,3 +1,11 @@
+---
+title: Gloo Edge with Microservice
+summary: Integrate Gloo Edge with Cloud Native Application.
+authors:
+  - Kamesh Sampath
+date: 2021-08-19
+---
+
 # Deploy App
 
 The demo application that will be deployed is a simple Fruits microservice. The source code the Fruits API is available [here](https://github.com/kameshsampath/gloo-edge-eks-a-demo){target=blank}.

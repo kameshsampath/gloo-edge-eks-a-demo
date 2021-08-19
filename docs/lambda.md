@@ -1,3 +1,11 @@
+---
+title: Gloo Edge with AWS Lambda
+summary: Integrate Gloo Edge with AWS Lambda.
+authors:
+  - Kamesh Sampath
+date: 2021-08-19
+---
+
 # AWS Lambda
 
 Gloo Edge can act as gateway to [AWS Lambda](https://aws.amazon.com/lambda/) functions.

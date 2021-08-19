@@ -17,8 +17,8 @@ nav:
   - 'Tutorial':
     - 'Overview': "tutorial.md"
     - 'Setup': "setup.md"
-    - 'Gloo Edge with AWS Lambda': "lambda.md"
-    - 'Gloo Edge with Microservice': "microservice.md"
+    - "Gloo Edge with AWS Lambda": "lambda.md"
+    - "Gloo Edge with Microservice": "microservice.md"
 markdown_extensions:
   - toc:
       baselevel: 1
