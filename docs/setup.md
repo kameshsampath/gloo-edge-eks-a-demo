@@ -6,6 +6,7 @@ At the end of this chapter you will have working `eks-a` cluster with Gloo Edge 
 
 - [eks-a](https://example.com/eks-a){target=_blank}
 - [glooctl](https://docs.solo.io/gloo-edge/latest/getting_started/){target=_blank}
+- [jq](https://stedolan.github.io/jq/){target=_blank}
 - [kubectl](https://kubectl.docs.kubernetes.io/installation/kubectl/){target=_blank}
 - [kustomize](https://kubectl.docs.kubernetes.io/installation/kustomize/){target=_blank}
 - Gloo Edge Enterprise License Key
@@ -26,13 +27,17 @@ For convinience, we will refer the clone demo sources folder as `$DEMO_HOME`,
 export DEMO_HOME="$(pwd)"
 ```
 
-## Create Cluster
+## EKS-A Cluster
+
+To create the EKS-A cluster run the following command,
 
 ```shell
-eks-a create cluster -f cluster/gloo-edge.yaml
+eks-a create cluster -f cluster/gloo-edge.yaml # (1)
 ```
 
-## Install Storage Class
+1. `gloo-edge.yaml`- will be generated using the `eks-a generate` command. For more information on the command please refer to {== **TODO** Link to eks-a docs ==}.
+
+## Configure Storage Class
 
 The demo clusters does not have default storage provisoners or storage class defined. For this demo we will use rancher's [local-path-provisoner](https://github.com/rancher/local-path-provisioner).
 
@@ -56,7 +61,7 @@ kubectl patch storageclass local-path \
 
 ## Install Gloo Edge Enterprise
 
-You can download latest glooctl by,
+Download and install latest **glooctl** by running,
 
 ```shell
 curl -sL https://run.solo.io/gloo/install | sh
@@ -68,7 +73,9 @@ Add glooctl to the system path,
 export PATH=$HOME/.gloo/bin:$PATH
 ```
 
-``` yaml
+Gloo Edge proxy is a Kubernetes service of type `LoadBalancer`, for the purpose of this blog we will configure it to be of type `NodePort` as shown below,
+
+```yaml hl_lines="11-12"
 gloo:
   settings:
     writeNamespace: gloo-system

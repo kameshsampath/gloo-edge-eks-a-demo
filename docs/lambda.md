@@ -25,9 +25,9 @@ At the end of this chapter you would have known how to:
 As we need to interact with AWS services, we will set the following environment variables,
 
 ```shell
-   export AWS_ACCESS_KEY_ID=<your aws access key>
-   export AWS_SECRET_ACCESS_KEY=<your aws secret key>
-   export AWS_DEFAULT_REGION=<the aws region to use for the resources>
+export AWS_ACCESS_KEY_ID=<your aws access key>
+export AWS_SECRET_ACCESS_KEY=<your aws secret key>
+export AWS_DEFAULT_REGION=<the aws region to use for the resources>
 ```
 
 ## Deploy AWS Lambda Function

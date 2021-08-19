@@ -1,4 +1,4 @@
-site_name: 'EKS-A Gloo Edge Demo'
+site_name: 'EKS-A Gloo Edge'
 site_url: https://kameshsampath.github.io/gloo-edge-eks-a-demo/
 theme:
   name: material
@@ -11,11 +11,14 @@ theme:
     - yml
     - shell
     - bash
+    - javascript
 nav:
-  - 'Overview': "index.md"
-  - 'EKS-A Cluster and Gloo Edge Setup': "setup.md"
-  - 'Lambda': "lambda.md"
-  - 'Microservice': "microservice.md"
+  - 'Gloo Edge on EKS-A in 5 minutes': "blog.md"
+  - 'Tutorial':
+    - 'Overview': "tutorial.md"
+    - 'Setup': "setup.md"
+    - 'Gloo Edge with AWS Lambda': "lambda.md"
+    - 'Gloo Edge with Microservice': "microservice.md"
 markdown_extensions:
   - toc:
       baselevel: 1
