@@ -998,7 +998,7 @@ Detected Gloo Federation!
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">NODE_COUNT</span><span class="o">=</span><span class="k">$(</span>kubectl get nodes --no-headers <span class="p">|</span> wc -l<span class="k">)</span>
 sudo sed -i -e <span class="s1">&#39;/#GLOO EDGE DEMO/,+&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">NODE_COUNT</span><span class="si">}</span><span class="s2">d&quot;</span> /etc/hosts
 </code></pre></div>
-<p>Optionally if you wish to delete the cluster then run </p>
+<p>Optionally if you wish to delete the cluster then run,</p>
 <div class="highlight"><pre><span></span><code>eks-a delete cluster -f gloo-edge.yaml
 </code></pre></div>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
