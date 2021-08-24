@@ -1,3 +1,11 @@
+---
+title: Gloo Edge on EKS-A in 5 minutes
+summary: Deploy Gloo Edge on EKS and integrate a Lambda function
+authors:
+  - Kamesh Sampath
+date: 2021-08-24
+---
+
 # Gloo Edge on EKS-A in 5 minutes
 
 ## Overview
