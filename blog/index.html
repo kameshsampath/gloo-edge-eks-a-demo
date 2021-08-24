@@ -652,6 +652,8 @@
 <li><a href="https://stedolan.github.io/jq/" target="_blank">jq</a></li>
 <li><a href="https://kubectl.docs.kubernetes.io/installation/kubectl/" target="_blank">kubectl</a></li>
 <li><a href="https://kubectl.docs.kubernetes.io/installation/kustomize/" target="_blank">kustomize</a></li>
+<li><a href="https://httpie.io" target="_blank">httpie</a></li>
+<li><a href="https://aws.amazon.com/cli/" target="_blank">AWS CLI v2</a></li>
 </ul>
 <p>Lastly you might need <em>Gloo Edge Enterprise License Key</em> to deploy Gloo Edge on to the eks-a infrastructure.</p>
 <h2 id="demo-sources">Demo Sources<a class="headerlink" href="#demo-sources" title="Permanent link">&para;</a></h2>
@@ -803,11 +805,19 @@ Detected Gloo Federation!
   --access-key<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$AWS_ACCESS_KEY_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
   --secret-key<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$AWS_SECRET_ACCESS_KEY</span><span class="s2">&quot;</span>
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have not set the environment variables <code>$AWS_ACCESS_KEY_ID</code> and <code>$AWS_SECRET_ACCESS_KEY</code>, the values access key and secret key  from <code>$HOME/.aws/credentials</code> will be used.</p>
+</div>
 <p>You can check the created credentials by,</p>
 <div class="highlight"><pre><span></span><code>kubectl get secrets -n gloo-system gloo-eks-a-demo -o yaml
 </code></pre></div>
 <h3 id="create-upstream">Create Upstream<a class="headerlink" href="#create-upstream" title="Permanent link">&para;</a></h3>
 <p>As part of this section we will create an Gloo <em>Upstream</em> that will allow the Virutal Service to talk to AWS Lambda via Gloo Edge Gateway,</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you are default region is other than <code>us-east-1</code>, ensure to set the value for &lsquo;$AWS_DEFAULT_REGION` to before running the upstream create command</p>
+</div>
 <div class="highlight"><pre><span></span><code>glooctl create upstream aws <span class="se">\</span>
   --name<span class="o">=</span><span class="s2">&quot;gloo-edge-hello-lambda&quot;</span> <span class="se">\</span>
   --aws-region<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$AWS_DEFAULT_REGION</span><span class="s2">&quot;</span> <span class="se">\</span>
@@ -879,6 +889,10 @@ Detected Gloo Federation!
 <p>We need to use the Gloo proxy to access the API, we can use glooctl to get the proxy URL,</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">GLOO_PROXY_URL</span><span class="o">=</span><span class="k">$(</span>glooctl proxy url<span class="k">)</span>
 </code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If the GLOO_PROXY_URL is set to hostname, then ensure the hostname is resolvable via the DNS of your VMC environment. If thats not resolvable it is recomended to use the one of the kubernetes node ip with NodePort <code>30080</code>. You can get the kubernetes node ip using the command <code>kubectl get nodes -owide</code></p>
+</div>
 <p>Check if the API is accessible,</p>
 <div class="highlight"><pre><span></span><code>http --body POST <span class="nv">$GLOO_PROXY_URL</span>/greet <span class="s1">&#39;Host: example.com&#39;</span> <span class="nv">user</span><span class="o">=</span>tom
 </code></pre></div>
