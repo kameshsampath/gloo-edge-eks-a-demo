@@ -816,7 +816,7 @@ Detected Gloo Federation!
 <p>As part of this section we will create an Gloo <em>Upstream</em> that will allow the Virutal Service to talk to AWS Lambda via Gloo Edge Gateway,</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>If you are default region is other than <code>us-east-1</code>, ensure to set the value for &lsquo;$AWS_DEFAULT_REGION` to before running the upstream create command</p>
+<p>If you are default region is other than <code>us-east-1</code>, ensure to set the value for <code>$AWS_DEFAULT_REGION</code> to before running the upstream create command.</p>
 </div>
 <div class="highlight"><pre><span></span><code>glooctl create upstream aws <span class="se">\</span>
   --name<span class="o">=</span><span class="s2">&quot;gloo-edge-hello-lambda&quot;</span> <span class="se">\</span>
