@@ -25,6 +25,8 @@ In this blog post, let us burst the myth and explore how we can setup API Gatewa
 - [jq](https://stedolan.github.io/jq/){target=_blank}
 - [kubectl](https://kubectl.docs.kubernetes.io/installation/kubectl/){target=_blank}
 - [kustomize](https://kubectl.docs.kubernetes.io/installation/kustomize/){target=_blank}
+- [httpie](https://httpie.io){target=_blank}
+- [AWS CLI v2](https://aws.amazon.com/cli/){target=_blank}
 
 Lastly you might need *Gloo Edge Enterprise License Key* to deploy Gloo Edge on to the eks-a infrastructure.
 
@@ -100,7 +102,6 @@ export PATH=$HOME/.gloo/bin:$PATH
 ```
 
 Gloo Edge proxy is a Kubernetes service of type `LoadBalancer`, for the purpose of this blog we will configure it to be of type `NodePort` using the `install-ee-values.yaml` as shown below,
-
 
 ```yaml hl_lines="11-12"
 gloo:
@@ -246,6 +247,9 @@ glooctl create secret aws \
   --secret-key="$AWS_SECRET_ACCESS_KEY"
 ```
 
+!!! note
+    If you have not set the environment variables `$AWS_ACCESS_KEY_ID` and `$AWS_SECRET_ACCESS_KEY`, the values access key and secret key  from `$HOME/.aws/credentials` will be used.
+
 You can check the created credentials by,
 
 ```shell
@@ -255,6 +259,9 @@ kubectl get secrets -n gloo-system gloo-eks-a-demo -o yaml
 ### Create Upstream
 
 As part of this section we will create an Gloo *Upstream* that will allow the Virutal Service to talk to AWS Lambda via Gloo Edge Gateway,
+
+!!! important
+    If you are default region is other than `us-east-1`, ensure to set the value for '$AWS_DEFAULT_REGION` to before running the upstream create command
 
 ``` shell
 glooctl create upstream aws \
@@ -349,6 +356,9 @@ We need to use the Gloo proxy to access the API, we can use glooctl to get the p
 ```shell
 export GLOO_PROXY_URL=$(glooctl proxy url)
 ```
+
+!!! important
+    If the GLOO_PROXY_URL is set to hostname, then ensure the hostname is resolvable via the DNS of your VMC environment. If thats not resolvable it is recomended to use the one of the kubernetes node ip with NodePort `30080`. You can get the kubernetes node ip using the command `kubectl get nodes -owide`
 
 Check if the API is accessible,
 
