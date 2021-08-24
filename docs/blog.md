@@ -466,7 +466,7 @@ export NODE_COUNT=$(kubectl get nodes --no-headers | wc -l)
 sudo sed -i -e '/#GLOO EDGE DEMO/,+'"${NODE_COUNT}d" /etc/hosts
 ```
 
-Optionally if you wish to delete the cluster then run 
+Optionally if you wish to delete the cluster then run,
 
 ```shell
 eks-a delete cluster -f gloo-edge.yaml
