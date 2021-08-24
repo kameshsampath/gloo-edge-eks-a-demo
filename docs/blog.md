@@ -261,7 +261,7 @@ kubectl get secrets -n gloo-system gloo-eks-a-demo -o yaml
 As part of this section we will create an Gloo *Upstream* that will allow the Virutal Service to talk to AWS Lambda via Gloo Edge Gateway,
 
 !!! important
-    If you are default region is other than `us-east-1`, ensure to set the value for '$AWS_DEFAULT_REGION` to before running the upstream create command
+    If you are default region is other than `us-east-1`, ensure to set the value for `$AWS_DEFAULT_REGION` to before running the upstream create command.
 
 ``` shell
 glooctl create upstream aws \
