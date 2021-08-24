@@ -80,11 +80,27 @@ Wait for the storage provisioner to be ready,
 kubectl rollout status -n local-path-storage deploy/local-path-provisioner --timeout=60s
 ```
 
-Set it as default storage class so that any new PVC requests will be created using this Storage class' underlying storage.
+Once the provisioner is installed, check the same using the command `kubectl get sc`.
+
+```shell
+NAME                   PROVISIONER             RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+local-path             rancher.io/local-path   Delete          WaitForFirstConsumer   false                  6d13h
+```
+
+As you have noticed from the command output about `local-path` is not the default storage class. Default storage class helps in dynamic provisioning of the Kubernetes Persistent Volumes.
+
+Let us set it as default storage class so that any new PVC requests will be created using this Storage class' underlying storage.
 
 ```shell
 kubectl patch storageclass local-path \
   -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+```
+
+Running the `kubectl get sc` again shows the `local-path` as the default provisoner,
+
+```shell
+NAME                   PROVISIONER             RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+local-path (default)   rancher.io/local-path   Delete          WaitForFirstConsumer   false                  6d13h
 ```
 
 ## Install Gloo Edge Enterprise
@@ -248,7 +264,7 @@ glooctl create secret aws \
 ```
 
 !!! note
-    If you have not set the environment variables `$AWS_ACCESS_KEY_ID` and `$AWS_SECRET_ACCESS_KEY`, the values access key and secret key  from `$HOME/.aws/credentials` will be used.
+    If you have not set the environment variables `$AWS_ACCESS_KEY_ID` and `$AWS_SECRET_ACCESS_KEY`, the value from `$HOME/.aws/credentials` will be used.
 
 You can check the created credentials by,
 
@@ -261,7 +277,7 @@ kubectl get secrets -n gloo-system gloo-eks-a-demo -o yaml
 As part of this section we will create an Gloo *Upstream* that will allow the Virutal Service to talk to AWS Lambda via Gloo Edge Gateway,
 
 !!! important
-    If you are default region is other than `us-east-1`, ensure to set the value for `$AWS_DEFAULT_REGION` to before running the upstream create command.
+    If you are default region is other than `us-east-1`, ensure to set the value for `$AWS_DEFAULT_REGION` to the region of your choice before running the upstream create command.
 
 ``` shell
 glooctl create upstream aws \
@@ -349,16 +365,32 @@ glooctl get vs greeter
 +-----------------+--------------------+-------------+------+----------+-----------------+------------------------------------+
 ```
 
-## Invoke Function
+## Gloo Proxy URL
 
-We need to use the Gloo proxy to access the API, we can use glooctl to get the proxy URL,
+We need to use the Gloo proxy to access the API, we can use `glooctl` to get the proxy URL,
 
 ```shell
 export GLOO_PROXY_URL=$(glooctl proxy url)
 ```
 
 !!! important
-    If the GLOO_PROXY_URL is set to hostname, then ensure the hostname is resolvable via the DNS of your VMC environment. If thats not resolvable it is recomended to use the one of the kubernetes node ip with NodePort `30080`. You can get the kubernetes node ip using the command `kubectl get nodes -owide`
+    `glooctl proxy url` always returns the `hostname` of the Kubernetes nodes. You can check the hostnames using the command `kubectl get nodes`
+
+## Resolve Nodes via **/etc/hosts**
+
+!!! note
+    You can ignore this section if your nodes are resolvable by their names
+
+Assuming that your VMC environment that does not have DNS resolver to resolve the `EKS-A` Kubernetes node names. In such caes we need to add the node names to the `/etc/hosts` file for them to be resolved.
+
+```shell
+kubectl get nodes \
+  -ojsonpath="
+{'#GLOO EDGE DEMO\n'}{range .items[*]}{.status.addresses[?(@.type == 'ExternalIP')].address}{'\t'}{.metadata.name}{'\n'}{end}") \
+  | sudo tee --append /etc/hosts
+```
+
+## Invoke Function
 
 Check if the API is accessible,
 
@@ -383,16 +415,56 @@ The command should return a list of fruits as shown,
 !!! tip
     Try the same request as show below to see the other repsonse headers
     ```shell
-      http POST $GLOO_PROXY_URL/greet 'Host: example.com' user=tom
+    http POST $GLOO_PROXY_URL/greet 'Host: example.com' user=tom
     ```
+
+## Cleanup
+
+Delete the virtual service,
+
+```shell
+glooctl delete vs greeter
+```
+
+Delete the upstream,
+
+```shell
+glooctl delete upstream  gloo-edge-hello-lambda
+```
+
+Delete AWS Lambda Function,
+
+```shell
+aws lambda delete-function --function-name gloo-edge-hello-lambda
+```
+
+Detach policy,
+
+```shell
+aws iam detach-role-policy --role-name gloo-edge-eks-a-lambdaex \
+  --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+```
+
+Delete the Role,
+
+```shell
+aws iam delete-role --role-name gloo-edge-eks-a-lambdaex
+```
+
+Remove entries from `/etc/hosts` file,
+
+```shell
+export NODE_COUNT=$(kubectl get nodes --no-headers | wc -l)
+sudo sed -i -e '/#GLOO EDGE DEMO/,+'"${NODE_COUNT}d" /etc/hosts
+```
 
 ## Summary
 
-As part of this short blog we,
+As part of this short blog we explored how to ,
 
-- [x] Created EKS-A cluster
-- [x] Deployed Gloo Edges
-- [x] And finally invoked an AWS Lambda function via Gloo Edge gateway
+- [x] Create a EKS-A cluster
+- [x] Deploy Gloo Edge
+- [x] Use GLoo Edge to invoke an AWS Lambda function
 
 Gloo Edge is not restricted to AWS Lambda, it can also be used to connect traditional microservices. Head over to the [tutorial](./index.md) to learn more on what other thigns you can do with Gloo Edge.
 
